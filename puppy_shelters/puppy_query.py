@@ -46,6 +46,12 @@ def query_three():
     for item in result:
         print item[0], item[1]
 
+def query_four():
+    """Query all puppies grouped by the shelter in which they are staying"""
+    result = session.query(Shelter, func.count(Puppy.id)).join(Puppy).group_by(Shelter.id).all()
+    for item in result:
+        print item[0].id, item[0].name, item[1]
+
 # Helper Methods
 def passesLeapDay(today):
     """
