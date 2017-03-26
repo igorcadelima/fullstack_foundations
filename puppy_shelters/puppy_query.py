@@ -39,6 +39,13 @@ def query_two():
     for item in result:
         print "{name}: {dob}".format(name=item[0], dob=item[1])
 
+def query_three():
+    """Query all puppies by ascending weight"""
+    result = session.query(Puppy.name, Puppy.weight).order_by(Puppy.weight.asc()).all()
+
+    for item in result:
+        print item[0], item[1]
+
 # Helper Methods
 def passesLeapDay(today):
     """
